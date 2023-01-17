@@ -2,7 +2,7 @@ var choices = [
 
     {
         question: "Which of these is a valid JavaScript comment?",
-        answers: [
+        answer: [
             "<!-- comment goes here -->",
             "// comment goes here",
             "///comment goes here",
@@ -15,7 +15,7 @@ var choices = [
 
     {
         question: "What is the preferred way to loop through an Array?",
-        answers: [
+        answer: [
             
             "for loop",
             "while loop",
@@ -30,7 +30,7 @@ var choices = [
     
     {
         question: "The Document Object Model (DOM) is a hierarchy that most closely resembles what object?",
-        answers: [
+        answer: [
             "a spiderweb",
             " a castle",
             "a tree",
@@ -43,7 +43,7 @@ var choices = [
 
     {
         question: "How can we access the data attributes of an HTML element from within JavaScript?",
-        answers: [
+        answer: [
             "element.dataset",
             "element.getAttribute",
             "element.getData()",
@@ -55,7 +55,7 @@ var choices = [
 
     {
         question: "What method allows us to add an attribute to a DOM element?",
-        answers: [
+        answer: [
             "element.getAttribute()",
             "element.createAttribute()",
             "element.setAttribute()",
@@ -70,7 +70,7 @@ var choices = [
 
     {
         question: "Which of the following type of variable is visible everywhere in your JavaScript code?",
-        answers: [
+        answer: [
             "global variable",
             "local variable",
             "Both of the above",
@@ -82,7 +82,7 @@ var choices = [
 
     {
         question: "To insert a JavaScript into an HTML page, which tag is used?",
-        answers: [
+        answer: [
             "<script=â€™javaâ€™>",
             "<script>",
             "<javascript>",
@@ -95,7 +95,7 @@ var choices = [
 
     {
         question: "What JavaScript keyword declares a variable?",
-        answers: [
+        answer: [
             "if",
             "create",
             "var",
@@ -108,7 +108,7 @@ var choices = [
 
     {
         question: "JavaScript is interpreted by ?",
-        answers: [
+        answer: [
             "Client",
             "Server",
             "Object",
@@ -121,7 +121,7 @@ var choices = [
 
     {
         question: "Using which statement is how you test for a specific condition. ",
-        answers: [
+        answer: [
         "Select",
         "If",
         "Switch",
