@@ -75,4 +75,10 @@ const quiz = {
         window.location.href = "highscores.html";
       }
     };
-    document.getElementById("start").addEventListener("click", quiz.startQuiz.bind(quiz));
+    if (document.getElementById("start")) {
+      document.getElementById("start").addEventListener("click", quiz.startQuiz.bind(quiz));
+    }
+
+ 
+  
+    
