@@ -1,75 +1,66 @@
-var correctAnswerIndex = 0;
-var finalScore = 0;
-var timer = 60;
-var currentQuestionIndex = 0;
-var intervalId;
-
-
-
-function startQuiz() {
-    // Start the timer
-    intervalId = setInterval(function() {
-        timer--;
-        if (timer === 0) {
-            clearInterval(intervalId);
-            endQuiz();
+const quiz = {
+    timeLeft: 65,
+    currentQuestionIndex: 0,
+    score: 0,
+    timerInterval: null,
+  
+    startQuiz() {
+      document.getElementById("start-screen").style.display = "none";
+      document.getElementById("questions").style.display = "block";
+      this.startTimer();
+      this.displayQuestions();
+    },
+  
+    startTimer() {
+      this.timerInterval = setInterval(() => {
+        this.timeLeft--;
+        document.getElementById("time").innerHTML = this.timeLeft;
+        if (this.timeLeft === 0) {
+          clearInterval(this.timerInterval);
+          this.endQuiz();
         }
-    }, 1000);
-    // Check for the length of the choices array before calling showQuestion
-    if (choices && choices.length > 0) {
-        showQuestion();
-        document.getElementById("start-screen").classList.add("hide");
-        document.getElementById("questions").classList.remove("hide");
+      }, 1000);
+    },
+  
+    displayQuestions() {
+      let currentQuestion = questions[this.currentQuestionIndex];
+      document.getElementById("question-title").innerHTML = currentQuestion.title;
+      let choices = document.getElementById("choices");
+      choices.innerHTML = "";
+      currentQuestion.choices.forEach((choice, index) => {
+        let choiceBtn = document.createElement("button");
+        choiceBtn.classList.add("choice");
+        choiceBtn.innerHTML = `${index + 1}. ${choice}`;
+        choiceBtn.addEventListener("click", event => {
+          if (event.target.value === currentQuestion.correctAnswer) {
+            this.score++;
+          }
+          this.currentQuestionIndex++;
+          if (this.currentQuestionIndex === questions.length) {
+            this.endQuiz();
+          } else {
+            this.displayQuestions();
+          }
+        });
+        choices.appendChild(choiceBtn);
+      });
+    },
+  
+    endQuiz() {
+      document.getElementById("questions").style.display = "none";
+      document.getElementById("end-screen").style.display = "block";
+      document.getElementById("final-score").innerHTML = this.score;
+      document.getElementById("submit").addEventListener("click", this.saveHighScore);
+    },
+  
+    saveHighScore() {
+      let initials = document.getElementById("initials").value;
+      let score = quiz.score;
+      let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+      highScores.push({ initials, score });
+      localStorage.setItem("highScores", JSON.stringify(highScores));
+      window.location.href = "highscores.html";
     }
-}
-if (choices && choices.length > 0) {
-    showQuestion();
-}
-
-function showQuestion() {
-    var question = choices[currentQuestionIndex];
-    // Get the current question and display it on the page
-    document.getElementById("question-title").textContent = question.question;
-    var choicesEl = document.getElementById("choices");
-    choicesEl.innerHTML = "";
-
-    for (var i = 0; i < answer.question.length; i++) {
-        let answer = question.answers[i];
-        var button = document.createElement("button");
-        button.textContent = answer;
-        button.addEventListener("click", (function(index) {
-            return function() {
-                checkAnswer(index);
-            }
-        })(i));
-        choicesEl.appendChild(button);
-    }
-}
-
-
-function checkAnswer(answerIndex) {
-    var question = choices[currentQuestionIndex];
-    if (answerIndex === question.correctAnswerIndex) {
-        finalScore++;
-    } else {
-        timer -= 10;
-    }
-    if(currentQuestionIndex < 0 || currentQuestionIndex >= choices.length) {
-        endQuiz();
-    }else{
-    currentQuestionIndex++;
-    if (currentQuestionIndex === choices.length) {
-        endQuiz();
-    } else {
-        showQuestion();
-    }
-    }
-}
-
-document.getElementById("start").addEventListener("click", startQuiz);
-function endQuiz() {
-    clearInterval(intervalId);
-    document.getElementById("questions").classList.add("hide");
-    document.getElementById("end-screen").classList.remove("hide");
-    document.getElementById("final-score").textContent = finalScore;
-}
+  };
+  
+  document.getElementById("start").addEventListener("click", quiz.startQuiz.bind(quiz));

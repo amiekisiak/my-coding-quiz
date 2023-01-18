@@ -14,7 +14,7 @@ for (let i = 0; i < highScores.length; i++) {
 });
 
 
-let submitButton = document.getElementById("submit")
+
 if(submitButton){
     submitButton.addEventListener("click", function(){
     // code to handle submit button click

@@ -1,136 +1,78 @@
-var choices = [
+var questions = [
 
     {
-        question: "Which of these is a valid JavaScript comment?",
-        answer: [
-            "<!-- comment goes here -->",
-            "// comment goes here",
-            "///comment goes here",
-            "::comment goes here",
-     
-       ],
+        title: "Which of these is a valid JavaScript comment?",
+        choices: [ "<!-- comment goes here -->","// comment goes here","///comment goes here","::comment goes here"],
 
-        correctAnswerIndex: 1,
+        correctAnswer: 2,
     },
 
     {
-        question: "What is the preferred way to loop through an Array?",
-        answer: [
-            
-            "for loop",
-            "while loop",
-            "list loop",
-            "for ... of loop",
-        
-        ],
+        title: "What is the preferred way to loop through an Array?",
+        choices: ["for loop","while loop","list loop","for ... of loop"],
 
-        correctAnswerIndex: 3,
+        correctAnswer: 4,
     },
 
     
     {
-        question: "The Document Object Model (DOM) is a hierarchy that most closely resembles what object?",
-        answer: [
-            "a spiderweb",
-            " a castle",
-            "a tree",
-            "a tournament bracket",
-        ],
+        title: "The Document Object Model (DOM) is a hierarchy that most closely resembles what object?",
+        choices: ["a spiderweb"," a castle","a tree","a tournament bracket"],
 
-        correctAnswerIndex: 2
+        correctAnswer: 3,
     },
 
 
     {
-        question: "How can we access the data attributes of an HTML element from within JavaScript?",
-        answer: [
-            "element.dataset",
-            "element.getAttribute",
-            "element.getData()",
-            "element.fetchData()",
-        
-        ],
-        correctAnswerIndex: 0,
+        title: "How can we access the data attributes of an HTML element from within JavaScript?",
+        choices: ["element.dataset","element.getAttribute","element.getData()","element.fetchData()"],
+        correctAnswer: 1,
     },
 
     {
-        question: "What method allows us to add an attribute to a DOM element?",
-        answer: [
-            "element.getAttribute()",
-            "element.createAttribute()",
-            "element.setAttribute()",
-            "element.makeAttribute()",
-        
-        ],
+        title: "What method allows us to add an attribute to a DOM element?",
+        choices: ["element.getAttribute()","element.createAttribute()","element.setAttribute()","element.makeAttribute()"],
 
-        correctAnswerIndex: 2,
+        correctAnswer: 3,
     },
 
  
 
     {
-        question: "Which of the following type of variable is visible everywhere in your JavaScript code?",
-        answer: [
-            "global variable",
-            "local variable",
-            "Both of the above",
-            "None of the above.",
-        ],
+        title: "Which of the following type of variable is visible everywhere in your JavaScript code?",
+        choices: ["global variable","local variable","Both of the above","None of the above."],
 
-        correctAnswerIndex: 0,
+        correctAnswer: 1,
     },
 
     {
-        question: "To insert a JavaScript into an HTML page, which tag is used?",
-        answer: [
-            "<script=â€™javaâ€™>",
-            "<script>",
-            "<javascript>",
-            "<js>",
-        
-        ],
+        title: "To insert a JavaScript into an HTML page, which tag is used?",
+        choices: ["<script=â€™javaâ€™>","<script>","<javascript>","<js>"],
 
-        correctAnswerIndex: 1,
+        correctAnswer: 2,
     },
 
     {
-        question: "What JavaScript keyword declares a variable?",
-        answer: [
-            "if",
-            "create",
-            "var",
-            "for",
-        
-        ],
+        title: "What JavaScript keyword declares a variable?",
+        choices: ["if","create","var","for"],
+
+        correctAnswer: 3,
+    },
+
+    {
+        title: "JavaScript is interpreted by ?",
+        choices: ["Client","Server","Object","None of the above"],
+
+        correctAnswer: 1,
+    },
+
+    {
+        title: "Using which statement is how you test for a specific condition. ",
+        choices: ["Select","If","Switch","For"],
 
         correctAnswerIndex: 2,
     },
 
-    {
-        question: "JavaScript is interpreted by ?",
-        answer: [
-            "Client",
-            "Server",
-            "Object",
-            "None of the above",
-        
-        ],
-
-        correctAnswerIndex: 0,
-    },
-
-    {
-        question: "Using which statement is how you test for a specific condition. ",
-        answer: [
-        "Select",
-        "If",
-        "Switch",
-        "For", 
-            
-        ],
-
-        correctAnswerIndex: 1,
-    },
-
 ]
 
+        
