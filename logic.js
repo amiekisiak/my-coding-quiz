@@ -1,9 +1,10 @@
 const quiz = {
     timeLeft: 65,
+    score:0,
     currentQuestionIndex: 0,
-    score: 0,
-    timerInterval: null,
-  
+    correctAnswerIndex: 0,
+    timerInterval:0,
+   
     startQuiz() {
       document.getElementById("start-screen").style.display = "none";
       document.getElementById("questions").style.display = "block";
@@ -13,7 +14,9 @@ const quiz = {
   
     startTimer() {
       this.timerInterval = setInterval(() => {
-        this.timeLeft--;
+        if(this.timeLeft>0) {
+          this.timeLeft--;
+        }
         document.getElementById("time").innerHTML = this.timeLeft;
         if (this.timeLeft === 0) {
           clearInterval(this.timerInterval);
@@ -34,6 +37,14 @@ const quiz = {
         choiceBtn.addEventListener("click", event => {
           if (event.target.value === currentQuestion.correctAnswer) {
             this.score++;
+            this.correctAnswers++;
+          } else {
+            if(this.timeLeft-10 > 0){
+            this.timeLeft -= 10;
+            }else{
+              this.timeLeft = 0;
+            }
+            this.incorrectAnswers++;
           }
           this.currentQuestionIndex++;
           if (this.currentQuestionIndex === questions.length) {
@@ -45,22 +56,23 @@ const quiz = {
         choices.appendChild(choiceBtn);
       });
     },
-  
     endQuiz() {
-      document.getElementById("questions").style.display = "none";
-      document.getElementById("end-screen").style.display = "block";
-      document.getElementById("final-score").innerHTML = this.score;
-      document.getElementById("submit").addEventListener("click", this.saveHighScore);
-    },
-  
-    saveHighScore() {
-      let initials = document.getElementById("initials").value;
-      let score = quiz.score;
-      let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-      highScores.push({ initials, score });
-      localStorage.setItem("highScores", JSON.stringify(highScores));
-      window.location.href = "highscores.html";
-    }
-  };
-  
-  document.getElementById("start").addEventListener("click", quiz.startQuiz.bind(quiz));
+        let finalScore = document.getElementById("final-score");
+        finalScore.textContent = `${this.score}`;
+
+        document.getElementById("questions").style.display = "none";
+        document.getElementById("end-screen").style.display = "block";
+        document.getElementById("submit").addEventListener("click", this.saveHighScore);
+      },
+    
+    
+      saveHighScore() {
+        let initials = document.getElementById("initials").value;
+        let score = quiz.score;
+        let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+        highScores.push({ initials, score });
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+        window.location.href = "highscores.html";
+      }
+    };
+    document.getElementById("start").addEventListener("click", quiz.startQuiz.bind(quiz));
