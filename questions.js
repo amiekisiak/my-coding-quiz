@@ -2,7 +2,7 @@ var questions = [
 
     {
         title: "Which of these is a valid JavaScript comment?",
-        choices: ["<!-- comment goes here -->","// comment goes here","///comment goes here","::comment goes here"],
+        choices: ["-- comment goes here --","// comment goes here","///comment goes here","::comment goes here"],
 
         correctAnswer: "// comment goes here"
     },
@@ -46,10 +46,10 @@ var questions = [
     },
 
     {
-        title: "To insert a JavaScript into an HTML page, which tag is used?",
-        choices: ["<script=â€™javaâ€™>","<script>","<javascript>","<js>"],
+        title: "Which of the following methods is used to access HTML elements using Javascript?",
+        choices: ["getElementbyld()","getElementsByClassName()","Both A and B","None of the above"],
 
-        correctAnswer: "<script>"
+        correctAnswer: "Both A and B"
     },
 
     {
