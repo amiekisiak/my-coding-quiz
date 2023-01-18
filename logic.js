@@ -37,9 +37,10 @@ const quiz = {
         choiceBtn.innerHTML = `${index + 1}. ${choice}`;
         choiceBtn.value = choice; //set the value property of the button
         choiceBtn.addEventListener("click", event => {
-          if (event.target.value === currentQuestion.correctAnswer) {
+       if (event.target.value === currentQuestion.correctAnswer) {
             this.score++; //increment the score property
             this.correctAnswers++;
+            document.getElementById("correct-audio").play(); // play incorrect answer audio
           } else {
             if(this.timeLeft-10 > 0){
             this.timeLeft -= 10;
@@ -47,6 +48,7 @@ const quiz = {
               this.timeLeft = 0;
             }
             this.incorrectAnswers++;
+            document.getElementById("incorrect-audio").play(); // play incorrect answer audio
           }
           this.currentQuestionIndex++;
           if (this.currentQuestionIndex === questions.length) {
@@ -81,5 +83,3 @@ const quiz = {
       document.getElementById("start").addEventListener("click", quiz.startQuiz.bind(quiz));
     }
 
-
-    
