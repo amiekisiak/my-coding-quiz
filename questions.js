@@ -2,7 +2,7 @@ var questions = [
 
     {
         title: "Which of these is a valid JavaScript comment?",
-        choices: [ "<!-- comment goes here -->","// comment goes here","///comment goes here","::comment goes here"],
+        choices: ["<!-- comment goes here -->","// comment goes here","///comment goes here","::comment goes here"],
 
         correctAnswer: "// comment goes here"
     },

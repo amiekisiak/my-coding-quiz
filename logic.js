@@ -1,9 +1,10 @@
 const quiz = {
-    timeLeft: 65,
-    score:0,
-    currentQuestionIndex: 0,
-    correctAnswerIndex: 0,
-    timerInterval:0,
+  timeLeft: 65,
+  score:0,
+  currentQuestionIndex: 0,
+  correctAnswerIndex: 0,
+  timerInterval:0,
+ 
    
     startQuiz() {
       document.getElementById("start-screen").style.display = "none";
@@ -34,9 +35,10 @@ const quiz = {
         let choiceBtn = document.createElement("button");
         choiceBtn.classList.add("choice");
         choiceBtn.innerHTML = `${index + 1}. ${choice}`;
+        choiceBtn.value = choice; //set the value property of the button
         choiceBtn.addEventListener("click", event => {
           if (event.target.value === currentQuestion.correctAnswer) {
-            this.score++;
+            this.score++; //increment the score property
             this.correctAnswers++;
           } else {
             if(this.timeLeft-10 > 0){
@@ -58,7 +60,7 @@ const quiz = {
     },
     endQuiz() {
         let finalScore = document.getElementById("final-score");
-        finalScore.textContent = `${this.score}`;
+        finalScore.textContent = `Your Score: ${this.score}`;
 
         document.getElementById("questions").style.display = "none";
         document.getElementById("end-screen").style.display = "block";
@@ -66,7 +68,7 @@ const quiz = {
       },
     
     
-      saveHighScore() {
+      saveHighScore(){
         let initials = document.getElementById("initials").value;
         let score = quiz.score;
         let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
@@ -79,6 +81,5 @@ const quiz = {
       document.getElementById("start").addEventListener("click", quiz.startQuiz.bind(quiz));
     }
 
- 
-  
+
     
