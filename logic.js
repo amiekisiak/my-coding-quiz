@@ -5,14 +5,14 @@ const quiz = {
   correctAnswerIndex: 0,
   timerInterval: 0,
 
-
+  // function to start quiz
   startQuiz() {
     document.getElementById("start-screen").style.display = "none";
     document.getElementById("questions").style.display = "block";
     this.startTimer();
     this.displayQuestions();
   },
-
+  // function to start timer
   startTimer() {
     this.timerInterval = setInterval(() => {
       if (this.timeLeft > 0) {
@@ -21,11 +21,12 @@ const quiz = {
       document.getElementById("time").innerHTML = this.timeLeft;
       if (this.timeLeft === 0) {
         clearInterval(this.timerInterval);
-        this.endQuiz();
+        this.endQuiz(); // to end quiz
       }
-    }, 1000);
+    }, 1000); // interval set to 1000 milliseconds
   },
 
+  // function to display the questions
   displayQuestions() {
     let currentQuestion = questions[this.currentQuestionIndex];
     document.getElementById("question-title").innerHTML = currentQuestion.title;
@@ -45,7 +46,7 @@ const quiz = {
           feedback.textContent = "Correct answer!";
           document.body.appendChild(feedback);
 
-          document.getElementById("correct-audio").play(); // play incorrect answer audio
+          document.getElementById("correct-audio").play(); // plays correct answer audio
 
         } else {
           if (this.timeLeft - 10 > 0) {
@@ -58,7 +59,7 @@ const quiz = {
           feedback.classList.add('wrapper')
           feedback.textContent = "Wrong answer!";
           document.body.appendChild(feedback);
-          document.getElementById("incorrect-audio").play(); // play incorrect answer audio
+          document.getElementById("incorrect-audio").play(); // plays incorrect answer audio
         }
         this.currentQuestionIndex++;
         if (this.currentQuestionIndex === questions.length) {
@@ -77,13 +78,13 @@ const quiz = {
 
     let finalScore = document.getElementById("final-score");
     finalScore.textContent = `Your Score: ${this.score}`;
-
+    // hide the questions screen and show the end screen
     document.getElementById("questions").style.display = "none";
     document.getElementById("end-screen").style.display = "block";
     document.getElementById("submit").addEventListener("click", this.saveHighScore);
   },
 
-
+  // function to save the high score
   saveHighScore() {
     let initials = document.getElementById("initials").value;
     let score = quiz.score;
@@ -92,7 +93,7 @@ const quiz = {
     localStorage.setItem("highScores", JSON.stringify(highScores));
     window.location.href = "highscores.html";
   }
-};
+}; // add a click event listener to the start button
 if (document.getElementById("start")) {
   document.getElementById("start").addEventListener("click", quiz.startQuiz.bind(quiz));
 }
