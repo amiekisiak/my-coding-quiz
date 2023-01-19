@@ -10,7 +10,7 @@ The quiz contains the following requirements:
 - There is a start button that when clicked a timer starts and the first question appears
 - Each questions contains buttons for each answer
 - When answer is clicked, the next question appears
-- If the answer clicked was incorrect then subtract time from the clock
+- If the clicked answer is incorrect then time is subtracted from the clock
 - The quiz ends when all questions are answered or the timer reaches 0.
 
 When the quiz ends, it displays score and give the user the ability to save their initials and their score.
@@ -22,6 +22,7 @@ N/A
 ## Usage
 
 URL of the deployed application: 
+https://amiekisiak.github.io/my-coding-quiz/
 
 ## Screenshot
 
